@@ -1,6 +1,6 @@
 {
   "name": "react-virtualized-list",
-  "version": "0.0.1-beta2",
+  "version": "0.0.1",
   "author": "Sailing",
   "license": "MIT",
   "main": "lib/bundle.cjs.js",
