@@ -5,7 +5,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import VirtualizedList from '../VirtualizedList';
+import VirtualizedList from 'react-virtualized-list';
 import './style/common.css';
 
 const InfiniteScrollList = () => {

@@ -24,8 +24,18 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
+    "react-virtualized-list": "^0.0.1-beta2",
     "react-visible-observer": "^1.0.4",
     "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.6",
+    "@babel/preset-env": "^7.24.6",
+    "@babel/preset-react": "^7.24.6",
+    "babel-loader": "^9.1.3",
+    "rollup": "^4.18.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-terser": "^7.0.2"
   },
   "eslintConfig": {
     "extends": [
@@ -47,14 +57,5 @@
   },
   "engines": {
     "node": ">=16.14.2"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.24.6",
-    "@babel/preset-env": "^7.24.6",
-    "@babel/preset-react": "^7.24.6",
-    "babel-loader": "^9.1.3",
-    "rollup": "^4.18.0",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-terser": "^7.0.2"
   }
 }
