@@ -15,19 +15,19 @@
 
 2. **无限滚动列表**：
         
-    实现无限滚动加载更多内容，适用于新闻、微博、朋友圈等场景，用户不断下滑屏幕，可以不断看到新的动态和信息。支持通过 `onLoadMore` 和 `hasMore` 属性实现无限滚动加载，常见于滚动加载下页数据。详见[InfiniteScrollList](https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/InfiniteScrollList.js)代码示例
+    实现无限滚动加载更多内容，适用于新闻、微博、朋友圈等场景，用户不断下滑屏幕，可以不断看到新的动态和信息。支持通过 `onLoadMore` 和 `hasMore` 属性实现无限滚动加载，常见于滚动加载下页数据。详见代码示例[InfiniteScrollList](https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/InfiniteScrollList.js)
 
 3. **数据懒加载**：
    
-   适用于需要懒加载的场景，可以延迟加载大量DOM、图片或视频，只有在即将进入视口时才加载，减少页面加载时间和带宽占用。通过 `renderItem` 和 `fetchItemData` 实现图片缩略图和高分辨率图片的懒加载。详见[LazyImage](https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/LazyImage.js)
+   适用于需要懒加载的场景，可以延迟加载大量DOM、图片或视频，只有在即将进入视口时才加载，减少页面加载时间和带宽占用。通过 `renderItem` 和 `fetchItemData` 实现图片缩略图和高分辨率图片的懒加载。详见代码示例[LazyImage](https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/LazyImage.js)
 
 4. **动态数据更新**（异步数据获取/按需加载）：
    
-   按需加载每个列表项的数据，减少初始加载时间，提升浏览器加载性能和服务端性能。例如在商品展示列表中，通过 `fetchItemData` 在用户滚动到特定商品时动态加载详细信息或图片。详见[DynamicInfiniteList](https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/DynamicInfiniteList.js)
+   按需加载每个列表项的数据，减少初始加载时间，提升浏览器加载性能和服务端性能。例如在商品展示列表中，通过 `fetchItemData` 在用户滚动到特定商品时动态加载详细信息或图片。详见代码示例[DynamicInfiniteList](https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/DynamicInfiniteList.js)
 
 5. **视口内自动刷新内容**：
   
-   在用户滚动时自动刷新视口内的内容，例如在新闻应用中动态加载最新的文章内容，滚动回之前的新闻位置时，自动更新最新内容。通过配置 `refreshOnVisible`，确保用户始终获取到最新的新闻内容。详见[RefreshOnVisible](https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/RefreshOnVisable.js)
+   在用户滚动时自动刷新视口内的内容，例如在新闻应用中动态加载最新的文章内容，滚动回之前的新闻位置时，自动更新最新内容。通过配置 `refreshOnVisible`，确保用户始终获取到最新的新闻内容。详见代码示例[RefreshOnVisible](https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/RefreshOnVisable.js)
 
 6. **定制化列表渲染**：
 
