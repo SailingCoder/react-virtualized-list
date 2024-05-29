@@ -1,6 +1,6 @@
 # react-virtualized-list
 
-`react-virtualized-list` is a high-performance React component library designed for displaying large datasets in virtualized lists. It supports lazy loading and infinite scrolling functionalities.
+`react-virtualized-list` is a high-performance React component library designed to efficiently handle large datasets. It offers features such as virtualized lists, infinite scrolling, lazy loading, and dynamic data updates. By rendering only the visible portions of the list and supporting on-demand data loading, the library aims to enhance performance. The repository provides installation instructions, usage examples, and detailed API documentation.
 
 ![npm version](https://img.shields.io/npm/v/react-virtualized-list)
 
