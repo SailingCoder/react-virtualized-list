@@ -1,11 +1,22 @@
 {
   "name": "react-virtualized-list",
-  "version": "0.0.1",
-  "private": true,
+  "version": "0.0.1-beta2",
   "author": "Sailing",
   "license": "MIT",
   "main": "lib/bundle.cjs.js",
   "module": "lib/bundle.esm.js",
+  "homepage": "https://sailingcoder.github.io/react-virtualized-list/build/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SailingCoder/react-virtualized-list.git"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "build-rollup": "rollup -c --bundleConfigAsCjs",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -15,13 +26,6 @@
     "react-scripts": "5.0.1",
     "react-visible-observer": "^1.0.4",
     "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "build-rollup": "rollup -c --bundleConfigAsCjs",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
