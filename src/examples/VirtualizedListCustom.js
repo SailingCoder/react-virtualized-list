@@ -52,7 +52,7 @@ const App = () => {
       <div className='title'>
         <h2>代码示例：虚拟化列表 - 大型数据列表</h2>
         <p>适用于呈现大量数据的场景，如聊天记录、新闻列表或商品列表。它只渲染当前可见的部分，减少不必要的 DOM 操作和内存消耗，提高页面性能和用户体验。</p>
-        <p>这个代码示例，比较全面的用到了所有的 API。</p>
+        <p>这个代码示例，比较全面的用到了所有的 API。代码见<a href='https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/VirtualizedListCustom.js' target='_blank'>VirtualizedListCustom</a></p>
       </div>
       <div className='content'>
         <VirtualizedList
