@@ -4,29 +4,29 @@
 
 ![npm version](https://img.shields.io/npm/v/react-virtualized-list)
 
-[Read English](https://github.com/SailingCoder/react-virtualized-list/blob/main/doc/README_EN.md)
+[简体中文](https://github.com/SailingCoder/react-virtualized-list/blob/main/doc/README_EN.md)
 
 ## Features & Use Cases
 
 1. **Virtualized List** (Large Data Lists):
    
-   Suitable for scenarios requiring the presentation of a large amount of data, such as chat logs, news feeds, or product lists. It only renders the currently visible portion, reducing unnecessary DOM operations and memory consumption, thereby improving page performance and user experience. See [VirtualizedList](https://github.com/SailingCoder/react-virtualized-list/blob/main/examples/VirtualizedListCustom.js).
+   Suitable for scenarios requiring the presentation of a large amount of data, such as chat logs, news feeds, or product lists. It only renders the currently visible portion, reducing unnecessary DOM operations and memory consumption, thereby improving page performance and user experience. See [VirtualizedList](https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/VirtualizedListCustom.js).
 
 2. **Infinite Scrolling List**:
    
-   Implement infinite scrolling to load more content, such as social media timelines, infinite galleries, or document browsers. Supports infinite scrolling loading through the `onLoadMore` and `hasMore` properties, commonly used for scrolling to load the next page of data. See [InfiniteScrollList](https://github.com/SailingCoder/react-virtualized-list/blob/main/examples/InfiniteScrollList.js).
+   Implement infinite scrolling to load more content, such as social media timelines, infinite galleries, or document browsers. Supports infinite scrolling loading through the `onLoadMore` and `hasMore` properties, commonly used for scrolling to load the next page of data. See [InfiniteScrollList](https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/InfiniteScrollList.js).
 
 3. **Data Lazy Loading**:
    
-   Suitable for scenarios requiring lazy loading, allowing for the deferred loading of large amounts of DOM, images, or videos, only loading when they are about to enter the viewport, reducing page load times and bandwidth consumption. Lazy loading of images can be implemented using `renderItem` and `fetchItemData` for thumbnail and high-resolution image loading. See [LazyImage](https://github.com/SailingCoder/react-virtualized-list/blob/main/examples/LazyImage.js).
+   Suitable for scenarios requiring lazy loading, allowing for the deferred loading of large amounts of DOM, images, or videos, only loading when they are about to enter the viewport, reducing page load times and bandwidth consumption. Lazy loading of images can be implemented using `renderItem` and `fetchItemData` for thumbnail and high-resolution image loading. See [LazyImage](https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/LazyImage.js).
 
 4. **Dynamic Data Updates** (Asynchronous Data Retrieval/On-Demand Loading):
    
-   Load data for each list item on demand, reducing initial load times and improving browser loading performance and server performance. For example, in a product showcase list, dynamically load detailed information or images for specific products as the user scrolls using `fetchItemData`. See [DynamicInfiniteList](https://github.com/SailingCoder/react-virtualized-list/blob/main/examples/DynamicInfiniteList.js).
+   Load data for each list item on demand, reducing initial load times and improving browser loading performance and server performance. For example, in a product showcase list, dynamically load detailed information or images for specific products as the user scrolls using `fetchItemData`. See [DynamicInfiniteList](https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/DynamicInfiniteList.js).
 
 5. **Automatically Refresh Content Within the Viewport**:
    
-   Automatically refresh content within the viewport as the user scrolls, such as dynamically loading the latest article content in a news application. By configuring `refreshOnVisible`, ensure users always receive the latest news content. See 详见[RefreshOnVisible](https://github.com/SailingCoder/react-virtualized-list/blob/main/examples/RefreshOnVisible.js).
+   Automatically refresh content within the viewport as the user scrolls, such as dynamically loading the latest article content in a news application. By configuring `refreshOnVisible`, ensure users always receive the latest news content. See 详见[RefreshOnVisible](https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/RefreshOnVisable.js).
 
 6. **Customized List Rendering**:
    
