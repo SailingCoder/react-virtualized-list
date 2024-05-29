@@ -121,33 +121,32 @@ const App = () => {
 export default App;
 ```
 
-
 ## API
 
 ### `VirtualizedList` Props (Continued)
 
 | Prop | Type | Required | Default | Description |
 |------|------|----------|---------|-------------|
-| `listData` | `Array` | ✅ | `[]` | 要展示的项目列表数据 |
-| `renderItem` | `Function(itemData, fetchData)` | ❌ | `(itemData) => (<>{itemData ? itemData : '加载数据中...'}</>)` | 渲染每个项目的函数 |
-| `refreshOnVisible` | `Boolean` | ❌ | `false` | 是否在**每次**滚动到列表项时重新加载数据 |
-| `fetchItemData` | `Function` | ❌ |  | 获取项目数据的异步函数 |
-| `containerHeight` | `String` | ❌ | `'400px'` | 列表容器的高度 |
-| `itemStyle` | `Object` | ❌ | `{}` | 每个项目的样式 |
-| `observerOptions` | `Object` | ❌ | `{ root: null, rootMargin: '0px', threshold: 0.1 }` | IntersectionObserver 的配置选项 |
-| `onLoadMore` | `Function` | ❌ |  | 当滚动到底部，加载更多数据的函数 |
-| `hasMore` | `Boolean` | ❌ | `false` | 是否还有更多数据可加载 |
-| `loader` | `String` | ❌ | `''` | 加载更多数据时显示的内容 |
-| `endMessage` | `String` | ❌ | `''` | 没有更多数据时显示的内容 |
-| `itemLoader` | `String` | ❌ | `''` | 每个项目加载时显示的占位内容或背景图 |
+| `listData` | `Array` | ✅ | `[]` | The list of items to display |
+| `renderItem` | `Function(itemData, fetchData)` | ❌ | `(itemData) => (<>{itemData ? itemData : 'Loading data...'}</>)` | Function to render each item |
+| `refreshOnVisible` | `Boolean` | ❌ | `false` | Whether to reload data **every time** an item becomes visible |
+| `fetchItemData` | `Function` | ❌ |  | Asynchronous function to fetch item data |
+| `containerHeight` | `String` | ❌ | `'400px'` | Height of the list container |
+| `itemStyle` | `Object` | ❌ | `{}` | Style for each item |
+| `observerOptions` | `Object` | ❌ | `{ root: null, rootMargin: '0px', threshold: 0.1 }` | Configuration options for the IntersectionObserver |
+| `onLoadMore` | `Function` | ❌ |  | Function to load more data when scrolled to the bottom |
+| `hasMore` | `Boolean` | ❌ | `false` | Whether there is more data to load |
+| `loader` | `String` | ❌ | `''` | Content to display when loading more data |
+| `endMessage` | `String` | ❌ | `''` | Content to display when there is no more data to load |
+| `itemLoader` | `String` | ❌ | `''` | Placeholder content or background image to display while each item is loading |
 
 ### `observerOptions` Configuration Table (Continued)
 
 | **Option**   | **Description**                                                      | **Type**  | **Required** | **Default** |
 | ------------ | -------------------------------------------------------------------- | --------- | ------------ | ----------- |
-| `root`       | 观察的视口元素。默认 null 表示使用浏览器的视口作为根容器。                                     | `Element` | ❌            | `null`      |
-| `rootMargin` | 根容器的外边距。可以使用类似 CSS 的值（如 `10px`, `20%`），默认值为 `0px`。用于扩展或收缩根容器的范围。     | `String`  | ❌            | `'0px'`     |
-| `threshold`  | 一个或多个数值数组，表示目标元素可见比例达到这些值时，回调函数会被触发。`0.1` 意味着目标元素可见部分达到 `10%` 时触发回调。 | `Array`   | ❌            | `0.1`       |
+| `root`       | The viewport element to observe. The default is null, which means the browser's viewport is used as the root container. | `Element` | ❌            | `null`      |
+| `rootMargin` | The margin around the root container. Can use CSS-like values (e.g., `10px`, `20%`). The default value is `0px`. Used to expand or shrink the root container's area. | `String`  | ❌            | `'0px'`     |
+| `threshold`  | A single number or an array of numbers which indicate at what percentage of the target's visibility the observer's callback should be executed. `0.1` means the callback will be triggered when 10% of the target is visible. | `Array`   | ❌            | `0.1`       |
 
 ## License
 
