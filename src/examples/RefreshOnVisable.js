@@ -42,7 +42,7 @@ const RefreshOnVisable = () => {
           refreshOnVisible={true}
           itemClassName='item-class-refresh'
           containerHeight='500px'
-          itemLoader={<div>Loading article...</div>}
+          itemLoader={<>Loading article...</>}
         />
       </div>
     </div>

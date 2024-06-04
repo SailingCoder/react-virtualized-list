@@ -66,7 +66,7 @@ const App = () => {
           refreshOnVisible={true}
           itemStyle={itemStyle}
           itemClassName='item-class'
-          itemLoader={<div>Not visible，Loading</div>}
+          itemLoader={<>Not visible，Loading</>}
           renderItem={(itemData, fetchData) => {
             return (
               <div>
