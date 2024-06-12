@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-// import VirtualizedList from 'react-virtualized-list';
-import VirtualizedList from '../VirtualizedListV2/VirtualizedList';
+import VirtualizedList from 'react-virtualized-list';
 
 interface Image {
   id: number;

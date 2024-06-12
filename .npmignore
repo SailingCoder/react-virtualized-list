@@ -6,4 +6,4 @@ rollup.config.js
 .babelrc
 .eslintrc.js
 tests/
-lib/VirtualizedListV2
+lib/VirtualizedListV2/

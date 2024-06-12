@@ -20,11 +20,11 @@ interface VirtualizedListProps<T> {
   emptyListMessage?: React.ReactNode;
 }
 
-const BUFFER_SIZE = 2;
+const BUFFER_SIZE = 1;
 
 const VirtualizedList = <T,>({
   listData = [],
-  renderItem = (itemData) => (<>{itemData ? itemData : 'Loading data...'}</>),
+  renderItem = (itemData) => (<>{itemData ? itemData : 'Loading ...'}</>),
   refreshOnVisible = false,
   fetchItemData = null,
   containerHeight = '400px',
@@ -74,6 +74,7 @@ const VirtualizedList = <T,>({
     const sortedVisibleItems = [...visibleItems].sort((a, b) => a - b);
     const firstVisible = sortedVisibleItems[0] || 0;
     const lastVisible = sortedVisibleItems[sortedVisibleItems.length - 1] || 0;
+    // 设置缓存区
     return [Math.max(0, firstVisible - BUFFER_SIZE), Math.min(listData.length - 1, lastVisible + BUFFER_SIZE)];
   }, [visibleItems, listData.length]);
 

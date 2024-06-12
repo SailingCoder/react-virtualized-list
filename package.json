@@ -1,6 +1,7 @@
 {
   "name": "react-virtualized-list",
   "author": "Sailing",
+  "version": "0.0.3-beta2",
   "license": "MIT",
   "main": "lib/bundle.cjs.js",
   "module": "lib/bundle.esm.js",
@@ -30,9 +31,11 @@
     "@types/node": "^20.14.2",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "antd": "^5.18.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
+    "react-virtualized-list": "^0.0.3-beta2",
     "react-visible-observer": "^1.0.4",
     "web-vitals": "^2.1.4"
   },

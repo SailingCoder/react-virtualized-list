@@ -2,7 +2,7 @@
 // 按需加载每个列表项的数据，减少初始加载时间，提升浏览器加载性能和服务端性能。
 // 例如在商品展示列表中，通过 `fetchItemData` 在用户滚动到特定商品时动态加载详细信息或图片。
 import React, { useState, useEffect } from 'react';
-import VirtualizedList from '../VirtualizedListV2/VirtualizedList';
+import VirtualizedList from 'react-virtualized-list';
 import './style/common.css';
 
 interface Product {
