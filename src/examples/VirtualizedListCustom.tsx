@@ -4,14 +4,13 @@
  * 这个代码示例，比较全面的用到了所有的 API
  */
 import React, { useState, useEffect } from 'react';
-import VirtualizedList from 'react-virtualized-list';
-// import VirtualizedList from '../VirtualizedListV2/VirtualizedList.js';
+import VirtualizedList from '../VirtualizedListV2/VirtualizedList';
 import './style/common.css';
 
-const App = () => {
-  const [listData, setListData] = useState([]);
+const App: React.FC = () => {
+  const [listData, setListData] = useState<string[]>([]);
   const [hasMore, setHasMore] = useState(true);
-  const [refreshOnVisible, setRefreshOnVisible] = useState(true);
+  const [refreshOnVisible] = useState(true);
 
   useEffect(() => {
     handleLoadMore();
@@ -27,7 +26,7 @@ const App = () => {
   //   pollFetchData()
   // }     
 
-  const handleLoadMore = async () => {
+  const handleLoadMore = async (): Promise<void> => {
     if (listData.length >= 100) {
       setHasMore(false);
       return;
@@ -37,15 +36,14 @@ const App = () => {
     
     setListData(prevItems => {
       const newItems = Array.from({ length: 10 }, (_, i) => `Item ${prevItems.length + i}`);
-      return [...prevItems, ...newItems]
+      return [...prevItems, ...newItems];
     });
   };
 
-  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  const delay = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 
   // 模拟异步获取 Item 数据
-  const getFetchData = (item) => {
-    // console.log('getFetchData', item)
+  const getFetchData = (item: string): Promise<string> => {
     return new Promise((resolve) => {
       // 模拟单个请求 1 秒后返回数据
       setTimeout(() => {
@@ -54,7 +52,7 @@ const App = () => {
     });
   };
 
-  const itemStyle = {};
+  const itemStyle: React.CSSProperties = {};
 
   return (
     <div className='container'>
@@ -64,7 +62,7 @@ const App = () => {
         <p>这个代码示例，比较全面的用到了所有的 API。代码见<a href='https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/VirtualizedListCustom.js' target='_blank'>VirtualizedListCustom</a></p>
       </div>
       <div className='content'>
-        <VirtualizedList
+        <VirtualizedList<string>
           observerOptions={{
             root: document.querySelector('.content'),
           }}
@@ -80,19 +78,16 @@ const App = () => {
           itemStyle={itemStyle}
           itemClassName='item-class'
           itemLoader={<>Not visible，Loading</>}
-          renderItem={(itemData, fetchData) => {
-            return (
-              <div>
-                <div>{itemData}</div>
-                <div>{fetchData ? fetchData : 'Loading data...'}</div>
-              </div>
-            )
-          }}
+          renderItem={(itemData, fetchData) => (
+            <div>
+              <div>{itemData}</div>
+              <div>{fetchData ? fetchData : 'Loading data...'}</div>
+            </div>
+          )}
         />
       </div>
     </div>
   );
 };
-
 
 export default App;

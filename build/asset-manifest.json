@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-virtualized-list/build/static/css/main.91612258.css",
-    "main.js": "/react-virtualized-list/build/static/js/main.5cb797a1.js",
-    "static/js/845.6038aacd.chunk.js": "/react-virtualized-list/build/static/js/845.6038aacd.chunk.js",
-    "index.html": "/react-virtualized-list/build/index.html",
-    "main.91612258.css.map": "/react-virtualized-list/build/static/css/main.91612258.css.map",
-    "main.5cb797a1.js.map": "/react-virtualized-list/build/static/js/main.5cb797a1.js.map",
-    "845.6038aacd.chunk.js.map": "/react-virtualized-list/build/static/js/845.6038aacd.chunk.js.map"
+    "main.css": "/static/css/main.91612258.css",
+    "main.js": "/static/js/main.eee57e94.js",
+    "static/js/845.6038aacd.chunk.js": "/static/js/845.6038aacd.chunk.js",
+    "index.html": "/index.html",
+    "main.91612258.css.map": "/static/css/main.91612258.css.map",
+    "main.eee57e94.js.map": "/static/js/main.eee57e94.js.map",
+    "845.6038aacd.chunk.js.map": "/static/js/845.6038aacd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.91612258.css",
-    "static/js/main.5cb797a1.js"
+    "static/js/main.eee57e94.js"
   ]
 }

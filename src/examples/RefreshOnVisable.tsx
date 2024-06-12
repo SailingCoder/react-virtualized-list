@@ -2,23 +2,35 @@
 // 在用户滚动时自动刷新视口内的内容。例如，在新闻应用中，动态加载新的文章，并这种功能确保用户始终能够获取到最新的新闻资讯。
 // 新闻列表 example
 import React, { useState, useEffect } from 'react';
-import VirtualizedList from 'react-virtualized-list';
+// import VirtualizedList from 'react-virtualized-list';
+import VirtualizedList from '../VirtualizedListV2/VirtualizedList';
 import './style/common.css';
 
-const fetchArticleData = async (article) => {
+interface Article {
+  id: number;
+  title: string;
+  content: string;
+}
+
+interface ArticleData {
+  title: string;
+  content: string;
+}
+
+const fetchArticleData = async (article: Article): Promise<ArticleData> => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve({ title: `${article.title}`, content: `更新时间${new Date().toLocaleTimeString()}` });
+      resolve({ title: `${article.title}`, content: `更新时间 ${new Date().toLocaleTimeString()}` });
     }, 500);
   });
 };
 
-const RefreshOnVisable = () => {
-  const [articles, setArticles] = useState([]);
+const RefreshOnVisible: React.FC = () => {
+  const [articles, setArticles] = useState<Article[]>([]);
 
   useEffect(() => {
-    const nowdate = new Date().toLocaleTimeString()
-    const initialArticles = Array.from({ length: 100 }, (_, i) => ({ id: i, title: `item ${i}`, content: `当前时间${nowdate}` }));
+    const nowDate = new Date().toLocaleTimeString();
+    const initialArticles = Array.from({ length: 100 }, (_, i) => ({ id: i, title: `item ${i}`, content: `当前时间 ${nowDate}` }));
     setArticles(initialArticles);
   }, []);
 
@@ -30,7 +42,7 @@ const RefreshOnVisable = () => {
         <p>通过配置 `refreshOnVisible`，确保用户始终获取到最新的新闻内容。代码见<a href='https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/RefreshOnVisable.js' target='_blank'>RefreshOnVisable</a></p>
       </div>
       <div className='content'>
-        <VirtualizedList
+        <VirtualizedList<Article>
           listData={articles}
           renderItem={(article, data) => (
             <div>
@@ -49,4 +61,4 @@ const RefreshOnVisable = () => {
   );
 };
 
-export default RefreshOnVisable;
+export default RefreshOnVisible;

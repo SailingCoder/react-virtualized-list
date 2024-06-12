@@ -1,0 +1,9 @@
+src/
+*.ts
+*.tsx
+*.map
+rollup.config.js
+.babelrc
+.eslintrc.js
+tests/
+lib/VirtualizedListV2

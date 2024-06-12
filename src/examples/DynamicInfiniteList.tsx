@@ -1,12 +1,21 @@
 // 动态数据更新（异步数据获取/按需加载）
 // 按需加载每个列表项的数据，减少初始加载时间，提升浏览器加载性能和服务端性能。
 // 例如在商品展示列表中，通过 `fetchItemData` 在用户滚动到特定商品时动态加载详细信息或图片。
-
 import React, { useState, useEffect } from 'react';
-import VirtualizedList from 'react-virtualized-list';
+import VirtualizedList from '../VirtualizedListV2/VirtualizedList';
 import './style/common.css';
 
-const fetchProductData = async (product) => {
+interface Product {
+  id: number;
+  name: string;
+}
+
+interface ProductData {
+  description: string;
+  imageUrl: string;
+}
+
+const fetchProductData = async (product: Product): Promise<ProductData> => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({ description: `Description for ${product.name}`, imageUrl: `https://via.placeholder.com/150?text=Product+${product.id}` });
@@ -14,7 +23,7 @@ const fetchProductData = async (product) => {
   });
 };
 
-const fetchProducts = async (page) => {
+const fetchProducts = async (page: number): Promise<Product[]> => {
   return new Promise((resolve) => {
     setTimeout(() => {
       const products = Array.from({ length: 10 }, (_, i) => ({
@@ -26,8 +35,8 @@ const fetchProducts = async (page) => {
   });
 };
 
-const DynamicInfiniteList = () => {
-  const [products, setProducts] = useState([]);
+const DynamicInfiniteList: React.FC = () => {
+  const [products, setProducts] = useState<Product[]>([]);
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(0);
 
@@ -56,7 +65,7 @@ const DynamicInfiniteList = () => {
             <div>
               <h2>{product.name}</h2>
               <p>{data ? data.description : 'Loading...'}</p>
-              {data && <img src={data.imageUrl} alt={product.name} />}
+              {data && data.imageUrl && <img src={data.imageUrl} alt={product.name} />}
             </div>
           )}
           itemClassName='item-class-dynamic'

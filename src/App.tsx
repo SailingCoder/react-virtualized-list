@@ -10,7 +10,7 @@ import DynamicInfiniteList from './examples/DynamicInfiniteList';
 import RefreshOnVisable from './examples/RefreshOnVisable';
 
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       {/* <div className="col-12">

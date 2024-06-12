@@ -1,10 +1,28 @@
-import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useMemo, useCallback, CSSProperties } from 'react';
 import useIntersectionObserver from './useIntersectionObserver';
 import VirtualizedListItem from './VirtualizedListItem';
 
+interface VirtualizedListProps<T> {
+  listData: T[];
+  renderItem: (itemData: T, fetchData: any) => React.ReactNode;
+  refreshOnVisible?: boolean;
+  fetchItemData?: ((item: T) => Promise<any>) | null;
+  containerHeight?: string;
+  itemStyle?: CSSProperties;
+  listClassName?: string | null;
+  itemClassName?: string | null;
+  observerOptions?: IntersectionObserverInit;
+  onLoadMore?: () => Promise<void>;
+  hasMore?: boolean;
+  loader?: React.ReactNode;
+  endMessage?: React.ReactNode;
+  itemLoader?: React.ReactNode;
+  emptyListMessage?: React.ReactNode;
+}
+
 const BUFFER_SIZE = 2;
 
-const VirtualizedList = ({
+const VirtualizedList = <T,>({
   listData = [],
   renderItem = (itemData) => (<>{itemData ? itemData : 'Loading data...'}</>),
   refreshOnVisible = false,
@@ -14,35 +32,33 @@ const VirtualizedList = ({
   listClassName = null,
   itemClassName = null,
   observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 },
-  onLoadMore = () => {},
+  onLoadMore = () => Promise.resolve(),
   hasMore = false,
   loader = '',
   endMessage = '',
   itemLoader = '',
   emptyListMessage = null,
-}) => {
-  const [visibleItems, setVisibleItems] = useState(new Set());
+}: VirtualizedListProps<T>) => {
+  const [visibleItems, setVisibleItems] = useState<Set<number>>(new Set());
   const [loading, setLoading] = useState(false);
-  const containerRef = useRef([]);
-  const sentinelRef = useRef(null);
+  const containerRef = useRef<(HTMLDivElement | null)[]>([]);
+  const sentinelRef = useRef<HTMLDivElement | null>(null);
 
-  const handleVisibilityChange = useCallback((isVisible, entry) => {
-    const index = parseInt(entry.target.getAttribute('data-index'), 10);
-    if (isVisible) {
-      setVisibleItems(prev => new Set(prev).add(index));
-    } else {
-      setVisibleItems(prev => {
-        const newVisibleItems = new Set(prev);
+  const handleVisibilityChange = useCallback((isVisible: boolean, entry: IntersectionObserverEntry) => {
+    const index = parseInt(entry.target.getAttribute('data-index')!, 10);
+    setVisibleItems(prev => {
+      const newVisibleItems = new Set(prev);
+      if (isVisible) {
+        newVisibleItems.add(index);
+      } else {
         newVisibleItems.delete(index);
-        return newVisibleItems;
-      });
-    }
+      }
+      return newVisibleItems;
+    });
   }, []);
 
-  const { observe, unobserve } = useIntersectionObserver(containerRef.current, handleVisibilityChange, null, observerOptions);
-
-  const handleSentinelIntersection = useCallback((isVisible) => {
-    if (isVisible && hasMore && onLoadMore && !loading) {
+  const handleSentinelIntersection = useCallback((isVisible: boolean) => {
+    if (isVisible && hasMore && !loading) {
       setLoading(true);
       onLoadMore().finally(() => {
         setLoading(false);
@@ -50,13 +66,14 @@ const VirtualizedList = ({
     }
   }, [hasMore, onLoadMore, loading]);
 
+  const { observe, unobserve } = useIntersectionObserver(containerRef.current, handleVisibilityChange, null, observerOptions);
+
   useIntersectionObserver([sentinelRef.current], handleSentinelIntersection, null, { root: null, rootMargin: '0px', threshold: 1.0 });
 
   const visibleRange = useMemo(() => {
     const sortedVisibleItems = [...visibleItems].sort((a, b) => a - b);
-    if (sortedVisibleItems.length === 0) return [0, BUFFER_SIZE];
-    const firstVisible = sortedVisibleItems[0];
-    const lastVisible = sortedVisibleItems[sortedVisibleItems.length - 1];
+    const firstVisible = sortedVisibleItems[0] || 0;
+    const lastVisible = sortedVisibleItems[sortedVisibleItems.length - 1] || 0;
     return [Math.max(0, firstVisible - BUFFER_SIZE), Math.min(listData.length - 1, lastVisible + BUFFER_SIZE)];
   }, [visibleItems, listData.length]);
 
@@ -69,7 +86,7 @@ const VirtualizedList = ({
     });
   }, [visibleRange, unobserve]);
 
-  const handleRef = useCallback((node, index) => {
+  const handleRef = useCallback((node: HTMLDivElement | null, index: number) => {
     if (node) {
       containerRef.current[index] = node;
       observe(node);
@@ -85,12 +102,12 @@ const VirtualizedList = ({
     ...itemStyle,
   }), [itemStyle]);
 
-  return (
-    <div className={listClassName} style={{ height: containerHeight, overflowY: 'auto' }}>
-      {listData.length ? listData.map((item, index) => (
-        (index >= visibleRange[0] && index <= visibleRange[1]) ? (
+  const renderItems = () => {
+    return listData.length ? listData.map((item, index) => {
+      if (index >= visibleRange[0] && index <= visibleRange[1]) {
+        return (
           <div
-            className={itemClassName}
+            className={itemClassName || undefined}
             style={itemContainerStyle}
             ref={node => handleRef(node, index)}
             key={index}
@@ -106,15 +123,22 @@ const VirtualizedList = ({
               {renderItem}
             </VirtualizedListItem>
           </div>
-        ) : null
-      )) : (
-        emptyListMessage ? emptyListMessage : null
-      )}
-      { listData.length ? hasMore ? (
+        );
+      }
+      return null;
+    }) : (
+      emptyListMessage ? emptyListMessage : null
+    );
+  };
+
+  return (
+    <div className={listClassName || undefined} style={{ height: containerHeight, overflowY: 'auto' }}>
+      {renderItems()}
+      {listData.length ? hasMore ? (
         <div ref={sentinelRef} style={{ height: '1px' }}>{loader}</div>
       ) : (
         <div>{endMessage}</div>
-      ) : null }
+      ) : null}
     </div>
   );
 };
