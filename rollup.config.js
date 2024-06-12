@@ -3,7 +3,7 @@ import { terser } from 'rollup-plugin-terser';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  input: 'src/VirtualizedList/index.js',
+  input: 'src/VirtualizedListV2/index.js',
   output: [
     {
       file: 'lib/bundle.cjs.js',

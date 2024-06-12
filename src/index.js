@@ -6,9 +6,11 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  // React 的严格模式会故意使组件重新渲染两次，以便更容易发现潜在的副作用和其他问题。
+  // <React.StrictMode>
+  //   <App />
+  // </React.StrictMode>
+  <App />
 );
 
 // If you want to start measuring performance in your app, pass a function
