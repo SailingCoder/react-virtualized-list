@@ -11,7 +11,7 @@ import './style/common.css';
 const App = () => {
   const [listData, setListData] = useState([]);
   const [hasMore, setHasMore] = useState(true);
-  const [refreshOnVisible, setRefreshOnVisible] = useState(false);
+  const [refreshOnVisible, setRefreshOnVisible] = useState(true);
 
   useEffect(() => {
     handleLoadMore();
