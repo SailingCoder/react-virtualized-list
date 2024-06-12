@@ -7,7 +7,7 @@
   "module": "lib/bundle.esm.js",
   "browser": "lib/bundle.umd.js",
   "types": "types/index.d.ts",
-  "homepage": "https://sailingcoder.github.io/react-virtualized-list/build/",
+  "homepage": "./",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SailingCoder/react-virtualized-list.git"
