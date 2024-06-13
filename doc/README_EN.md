@@ -1,126 +1,79 @@
 # react-virtualized-list
 
-`react-virtualized-list` 是一个高性能的 React 组件库，专为高效处理大型数据集而设计。它提供了虚拟化列表、无限滚动、懒加载和动态数据更新等功能。通过只渲染可见部分列表并支持按需数据加载，该库旨在提高性能。仓库中提供了安装说明、使用示例和详细的 API 文档。
+`react-virtualized-list` is a high-performance React component library designed for handling large datasets efficiently. It offers features like virtualized rendering, infinite scrolling, lazy loading, and dynamic data updates. Using `IntersectionObserver` for precise visibility management helps optimize performance and supports flexible rendering and loading behaviors. The repository provides detailed installation instructions, usage examples, and comprehensive API documentation, making it suitable for quick integration and customization.
 
-![npm version](https://img.shields.io/npm/v/react-virtualized-list)
+![npm version](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7d1919d96fa742c098a233bb338bb047~tplv-k3u1fbpfcp-image.image#?w=116\&h=20\&s=1153\&e=svg\&b=ea7d3d)
 
-[English](https://github.com/SailingCoder/react-virtualized-list/blob/main/README.md)
+[简体中文](https://github.com/SailingCoder/react-virtualized-list/blob/main/README.md)
 
+## Features
 
-## 特性 & 适用场景
+- **Virtualized Rendering**: Renders only the items visible in the viewport, significantly reducing DOM operations and enhancing page performance.
+- **Infinite Scrolling**: Supports loading more data as the user scrolls, suitable for scenarios requiring dynamic content loading.
+- **Customizable Rendering and Styles**: Allows customization of each item's rendering and appearance styles as per requirements.
+- **Loading and End Messages**: Provides configurations for loaders and end messages to optimize user experience.
+- **Supports TypeScript and JavaScript**: Suitable for both TypeScript and JavaScript projects.
 
-1. **虚拟化列表**（大型数据列表）：
-  
-   适用于呈现大量数据的场景，如聊天记录、新闻列表或商品列表。它只渲染当前可见的部分，减少不必要的 DOM 操作和内存消耗，提高页面性能和用户体验。详见代码示例[VirtualizedList](https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/VirtualizedListCustom.js)
+## Installation
 
-2. **无限滚动列表**：
-        
-    实现无限滚动加载更多内容，适用于新闻、微博、朋友圈等场景，用户不断下滑屏幕，可以不断看到新的动态和信息。支持通过 `onLoadMore` 和 `hasMore` 属性实现无限滚动加载，常见于滚动加载下页数据。详见代码示例[InfiniteScrollList](https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/InfiniteScrollList.js)
-
-3. **数据懒加载**：
-   
-   适用于需要懒加载的场景，可以延迟加载大量DOM、图片或视频，只有在即将进入视口时才加载，减少页面加载时间和带宽占用。通过 `renderItem` 和 `fetchItemData` 实现图片缩略图和高分辨率图片的懒加载。详见代码示例[LazyImage](https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/LazyImage.js)
-
-4. **动态数据更新**（异步数据获取/按需加载）：
-   
-   按需加载每个列表项的数据，减少初始加载时间，提升浏览器加载性能和服务端性能。例如在商品展示列表中，通过 `fetchItemData` 在用户滚动到特定商品时动态加载详细信息或图片。详见代码示例[DynamicInfiniteList](https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/DynamicInfiniteList.js)
-
-5. **视口内自动刷新内容**：
-  
-   在用户滚动时自动刷新视口内的内容，例如在新闻应用中动态加载最新的文章内容，滚动回之前的新闻位置时，自动更新最新内容。通过配置 `refreshOnVisible`，确保用户始终获取到最新的新闻内容。详见代码示例[RefreshOnVisible](https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/RefreshOnVisable.js)
-
-6. **定制化列表渲染**：
-
-   支持自定义列表和列表项，通过使用 `renderItem` 项目渲染函数，你可以根据需求定制每个项目的外观和行为。
-
-## 安装
-
-使用 npm 或 yarn 安装：
+Install via npm or yarn:
 
 ```bash
 npm install react-virtualized-list
-```
-
-或者
-
-```bash
+# or
 yarn add react-virtualized-list
 ```
 
-## 使用示例
+## Usage
 
-以下是一个使用示例，展示如何使用 `react-virtualized-list` 组件：
+### Basic Usage
+
+Here's a basic usage example demonstrating how to use the `react-virtualized-list` component:
 
 ```javascript
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import VirtualizedList from 'react-virtualized-list';
 
+const itemStyle = {
+  height: '50px',
+  lineHeight: '40px',
+  border: '1px solid blue',
+  marginBottom: '10px',
+};
+
+const containerStyle = {
+  width: '400px', 
+  height: '600px', 
+  margin: '0 auto', 
+  border: '1px solid red', 
+  padding: '16px',
+  textAlign: 'center',
+}
+
 const App = () => {
-  const [listData, setListData] = useState([]);
-  const [hasMore, setHasMore] = useState(true);
+  // Example data
+  const data = Array.from({ length: 1000 }, (_, index) => `Item ${index}`);
 
-  useEffect(() => {
-    handleLoadMore();
-  }, []);
-
-  // 模拟获取 list 数据
-  const handleLoadMore = () => {
-    if (listData.length >= 100) {
-      setHasMore(false);
-      return;
-    }
-    const newItems = Array.from({ length: 10 }, (_, i) => `Item ${listData.length + i + 1}`);
-    setListData(prevItems => [...prevItems, ...newItems]);
-    if (newItems.length < 10) { // 修正为与加载条数一致
-      setHasMore(false);
-    }
+  // Function to load more items
+  const handleLoadMore = async () => {
+    // Logic to load more data
   };
 
-  // 模拟异步获取 Item 数据
-  const getFetchData = (item) => {
-    return new Promise((resolve) => {
-      // 模拟单个请求 1 秒后返回数据
-      setTimeout(() => {
-        resolve(`${item} (fetched data) ${new Date().toLocaleTimeString()}`);
-      }, 3000);
-      // 多个请求 1 秒后返回数据
-      // Promise.all([ 
-      //   Promise.resolve(`${item} (fetched data)`), 
-      //   Promise.resolve(`Hello World`) 
-      // ]).then(data => {
-      //   resolve(data.join(' - '));
-      // });
-    });
-  };
-
-  const itemStyle = {
-    minHeight: '50px',
-    border: '1px solid blue',
-    margin: '10px 0',
-    padding: '10px',
-    backgroundColor: '#f0f0f0'
-  };
+  // Function to render each item
+  const renderItem = (itemData) => <div>{itemData}</div>;
 
   return (
-    <div style={{ width: '400px', height: '600px', margin: '0 auto' }}>
+    <div style={containerStyle}>
       <VirtualizedList
-        listData={listData}
+        listData={data}
+        renderItem={renderItem}
         containerHeight="600px"
-        hasMore={hasMore}
-        onLoadMore={handleLoadMore}
-        loader={<div>加载更多数据...</div>}
-        endMessage={<div>加载完毕！</div>}
-        fetchItemData={getFetchData}
-        refreshOnVisible={true}
+        hasMore={true}
         itemStyle={itemStyle}
-        itemLoader={<div>Not visible，Loading</div>}
-        renderItem={(itemData, fetchData) => {
-          return (
-            <div>
-              {fetchData ? fetchData : 'Loading data...'}
-            </div>
-          )
-        }}
+        itemLoader={<div>Loading ...</div>}
+        onLoadMore={handleLoadMore}
+        loader={<div>Loading...</div>}
+        endMessage={<div>No more items.</div>}
       />
     </div>
   );
@@ -129,42 +82,58 @@ const App = () => {
 export default App;
 ```
 
-## API
+### Advanced Use Cases
 
-### `VirtualizedList` Props
+Explore more examples and advanced use cases:
 
-| Prop | Type | Required | Default | Description |
-|------|------|----------|---------|-------------|
-| `listData` | `Array` | ✅ | `[]` | 要展示的项目列表数据 |
-| `renderItem` | `Function(itemData, fetchData)` | ❌ | `(itemData) => (<>{itemData ? itemData : '加载数据中...'}</>)` | 渲染每个项目的函数 |
-| `refreshOnVisible` | `Boolean` | ❌ | `false` | 是否在**每次**滚动到列表项时重新加载数据 |
-| `fetchItemData` | `Function` | ❌ |  | 获取项目数据的异步函数 |
-| `containerHeight` | `String` | ❌ | `'400px'` | 列表容器的高度 |
-| `listClassName` | `String` | ❌ | `{}` | 列表ClassName |
-| `itemClassName` | `String` | ❌ | `{}` | 每个项目ClassName |
-| `itemStyle` | `Object` | ❌ | `{}` | 每个项目的样式 |
-| `observerOptions` | `Object` | ❌ | `{ root: null, rootMargin: '0px', threshold: 0.1 }` | IntersectionObserver 的配置选项 |
-| `onLoadMore` | `Function` | ❌ |  | 当滚动到底部，加载更多数据的函数 |
-| `hasMore` | `Boolean` | ❌ | `false` | 是否还有更多数据可加载 |
-| `loader` | `String` | ❌ | `''` | 加载更多数据时显示的内容 |
-| `endMessage` | `String` | ❌ | `''` | 没有更多数据时显示的内容 |
-| `itemLoader` | `String` | ❌ | `''` | 每个项目加载时显示的占位内容或背景图 |
+1. **Virtualized Lists** (Large data lists): Enhance performance for large datasets by rendering only visible items. Check out [BigDataListExample](https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/BigDataListExample.tsx).
 
+2. **Infinite Scrolling**: Implement infinite scrolling for continuous content loading. See [InfiniteScrollList](https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/InfiniteScrollList.tsx).
 
-### `observerOptions` 配置表格
+3. **Lazy Loading Data**: Lazy load images or videos to reduce initial page load time. Explore [LazyImage](https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/LazyImage.tsx).
 
-| **Option**   | **Description**                                                      | **Type**  | **Required** | **Default** |
-| ------------ | -------------------------------------------------------------------- | --------- | ------------ | ----------- |
-| `root`       | 观察的视口元素。默认 null 表示使用浏览器的视口作为根容器。                                     | `Element` | ❌            | `null`      |
-| `rootMargin` | 根容器的外边距。可以使用类似 CSS 的值（如 `10px`, `20%`），默认值为 `0px`。用于扩展或收缩根容器的范围。     | `String`  | ❌            | `'0px'`     |
-| `threshold`  | 一个或多个数值数组，表示目标元素可见比例达到这些值时，回调函数会被触发。`0.1` 意味着目标元素可见部分达到 `10%` 时触发回调。 | `Array`   | ❌            | `0.1`       |
+4. **Dynamic Data Updates**: Efficiently load data for each list item as needed. View [DynamicInfiniteList](https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/DynamicInfiniteList.tsx).
 
+5. **Auto Refresh on Visibility**: Automatically refresh content in the visible viewport to ensure users see the latest data. Refer to [RefreshOnVisible](https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/RefreshOnVisible.tsx).
 
-## 许可证
+6. **Custom Rendering**: Customize appearance and behavior of each item based on specific project needs.
 
-**react-virtualized-list** is released under the MIT License. See the [LICENSE](https://github.com/SailingCoder/react-virtualized-list/blob/main/LICENSE) file for details.
+7. **Integration with Third-Party UI Libraries**: Flexible integration with popular UI libraries like [Ant Design](https://ant-design.antgroup.com/index-cn) for enhanced user experience.
 
+## Parameters
 
+### `VirtualizedList` Component Props
 
+| Prop              | Type                        | Required | Default | Description                             |
+| ----------------- | --------------------------- | -------- | ------- | --------------------------------------- |
+| `listData`        | `Array`                     | ✅       | `[]`    | Array of data for the list              |
+| `renderItem`      | `(itemData: T) => React.ReactNode` | ❌  | `itemData => <>{itemData ? itemData : 'Loading ...'}</>` | Function to render each item             |
+| `refreshOnVisible`| `Boolean`                   | ❌       | `false` | Whether to refresh data when item becomes visible |
+| `fetchItemData`   | `(item: T) => Promise<any>` | ❌       | `null`  | Async function to fetch data for each item |
+| `containerHeight` | `String`                    | ❌       | `'400px'` | Height of the list container            |
+| `listClassName`   | `String`                    | ❌       | `null`  | CSS class for the list container        |
+| `itemClassName`   | `String`                    | ❌       | `null`  | CSS class for each item (recommended)   |
+| `itemStyle`       | `Object`                    | ❌       | `{}`    | Style object for each item              |
+| `observerOptions` | `Object`                    | ❌       | `{ root: null, rootMargin: '0px', threshold: 0.1 }` | Options for the `IntersectionObserver`  |
+| `onLoadMore`      | `() => Promise<void>`       | ❌       | `null`  | Function to load more data              |
+| `hasMore`         | `Boolean`                   | ❌       | `false` | Whether there is more data to load      |
+| `loader`          | `React.ReactNode`           | ❌       | `''`    | Content to display while loading more data |
+| `endMessage`      | `React.ReactNode`           | ❌       | `''`    | Content to display when all data is loaded |
+| `itemLoader`      | `React.ReactNode`           | ❌       | `''`    | Placeholder or background to display while each item is loading |
+| `emptyListMessage`| `React.ReactNode`           | ❌       | `''`    | Content to display when the list is empty |
 
+### `observerOptions` Configuration Table
 
+| **Option**   | **Description**                                       | **Type**   | **Required** | **Default** |
+| ------------ | ----------------------------------------------------- | ---------- | ------------ | ----------- |
+| `root`       | The element that is used as the viewport for checking | `Element`  | ❌           | `null`      |
+| `rootMargin` | Margin around the root. Can be specified like CSS values (e.g., `10px`, `20%`) | `String`   | ❌           | `'0px'`     |
+| `threshold`  | Either a single number or an array of numbers which indicate at what percentage of the target's visibility the observer's callback should be executed. | `Array`    | ❌           | `0.1`       |
+
+## License
+
+**react-virtualized-list** is released under the MIT License. See the [LICENSE](https://github.com/SailingCoder/react-virtualized-list/blob/main/LICENSE) file for details.
+
+## Conclusion
+
+If you encounter any issues or have suggestions for improvement, please raise them on [GitHub Issues](https://github.com/SailingCoder/react-virtualized-list/issues).
