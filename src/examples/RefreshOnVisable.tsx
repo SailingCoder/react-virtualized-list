@@ -38,7 +38,7 @@ const RefreshOnVisible: React.FC = () => {
       <div className='title'>
         <h2>视口内自动刷新内容</h2>
         <p>在用户滚动时自动刷新视口内的内容，例如在新闻应用中动态加载最新的文章内容，滚动回之前的新闻位置时，自动更新最新内容。</p>
-        <p>通过配置 `refreshOnVisible`，确保用户始终获取到最新的新闻内容。代码见<a href='https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/RefreshOnVisable.js' target='_blank'>RefreshOnVisable</a></p>
+        <p>通过配置 `refreshOnVisible`，确保用户始终获取到最新的新闻内容。代码示例详见：<a href='https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/RefreshOnVisable.tsx' target='_blank'>RefreshOnVisable</a>（代码可直接复制使用）</p>
       </div>
       <div className='content'>
         <VirtualizedList<Article>

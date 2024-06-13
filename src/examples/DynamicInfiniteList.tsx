@@ -56,7 +56,8 @@ const DynamicInfiniteList: React.FC = () => {
       <div className='title'>
         <h2>动态数据更新（异步数据获取/按需加载）</h2>
         <p>按需加载每个列表项的数据，减少初始加载时间，提升浏览器加载性能和服务端性能。</p>
-        <p>例如在商品展示列表中，通过 `fetchItemData` 在用户滚动到特定商品时动态加载详细信息或图片。代码见<a href='https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/DynamicInfiniteList.js' target='_blank'>DynamicInfiniteList</a></p>
+        <p>例如在商品展示列表中，通过 `fetchItemData` 在用户滚动到特定商品时动态加载详细信息或图片。</p>
+        <p>代码示例详见：<a href='https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/DynamicInfiniteList.tsx' target='_blank'>DynamicInfiniteList</a>（代码可直接复制使用）</p>
       </div>
       <div className='content'>
         <VirtualizedList

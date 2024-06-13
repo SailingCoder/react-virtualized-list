@@ -48,7 +48,7 @@ const BigDataListExample: React.FC = () => {
       <div className='title'>
         <h2>代码示例：大型数据列表</h2>
         <p>当需要渲染一个包含大量数据的列表时，直接渲染所有项目会导致浏览器性能下降。VirtualizedList 通过仅渲染可见的项目，大大提高了性能和响应速度。</p>
-        <p>代码详见<a href='https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/BigDataListExample.js' target='_blank'>BigDataListExample</a></p>
+        <p>代码示例详见：<a href='https://github.com/SailingCoder/react-virtualized-list/blob/main/src/examples/BigDataListExample.tsx' target='_blank'>BigDataListExample</a>（代码可直接复制使用）</p>
       </div>
       <div className='content'>
         <VirtualizedList
