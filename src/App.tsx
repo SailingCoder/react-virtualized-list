@@ -11,7 +11,7 @@ import SimpleExample from './examples/SimpleExample';
 
 
 const items = [
-  { key: 'SimpleExample', label: '简单例子', content: <SimpleExample /> },
+  // { key: 'SimpleExample', label: '简单例子', content: <SimpleExample /> },
   { key: 'BigDataListExample', label: '大数据列表', content: <BigDataListExample /> },
   { key: 'InfiniteScrollList', label: '无限滚动', content: <InfiniteScrollList /> },
   { key: 'LazyImage', label: '懒加载项目', content: <LazyImage /> },
