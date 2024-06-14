@@ -2,7 +2,7 @@
 
 `react-virtualized-list` is a high-performance React component library designed for handling large datasets efficiently. It offers features like virtualized rendering, infinite scrolling, lazy loading, and dynamic data updates. Using `IntersectionObserver` for precise visibility management helps optimize performance and supports flexible rendering and loading behaviors. The repository provides detailed installation instructions, usage examples, and comprehensive API documentation, making it suitable for quick integration and customization.
 
-![npm version](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7d1919d96fa742c098a233bb338bb047~tplv-k3u1fbpfcp-image.image#?w=116\&h=20\&s=1153\&e=svg\&b=ea7d3d)
+![npm version](https://img.shields.io/npm/v/react-virtualized-list)
 
 [简体中文](https://github.com/SailingCoder/react-virtualized-list/blob/main/README.md)
 

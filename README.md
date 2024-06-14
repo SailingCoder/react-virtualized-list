@@ -2,7 +2,7 @@
 
 `react-virtualized-list` 是一个专为处理大型数据集而设计的高性能 React 虚拟组件库，提供虚拟化列表、无限滚动、懒加载和动态数据更新等功能。通过使用 `IntersectionObserver` 精确管理可见性，优化性能并支持灵活的渲染和加载行为配置。仓库提供了详细的安装说明、使用示例和全面的 API 文档，适合快速集成和定制。
 
-![npm version](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7d1919d96fa742c098a233bb338bb047~tplv-k3u1fbpfcp-image.image#?w=116\&h=20\&s=1153\&e=svg\&b=ea7d3d)
+![npm version](https://img.shields.io/npm/v/react-virtualized-list)
 
 [English](https://github.com/SailingCoder/react-virtualized-list/blob/main/doc/README_EN.md)
 
