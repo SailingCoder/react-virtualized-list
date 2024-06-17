@@ -1,13 +1,13 @@
 {
   "name": "react-virtualized-list",
   "author": "Sailing",
-  "version": "0.0.4",
+  "version": "0.0.4-beta1",
   "license": "MIT",
   "main": "lib/bundle.cjs.js",
   "module": "lib/bundle.esm.js",
   "browser": "lib/bundle.umd.js",
   "types": "types/index.d.ts",
-  "homepage": "./",
+  "homepage": "https://sailingcoder.github.io/react-virtualized-list/build/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SailingCoder/react-virtualized-list.git"
