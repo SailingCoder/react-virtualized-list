@@ -3,6 +3,7 @@
   "author": "Sailing",
   "version": "0.0.4-beta1",
   "license": "MIT",
+  "description": "High-performance React virtualized list component with infinite scrolling, lazy loading, and dynamic data updates using IntersectionObserver",
   "main": "lib/bundle.cjs.js",
   "module": "lib/bundle.esm.js",
   "browser": "lib/bundle.umd.js",
@@ -12,6 +13,29 @@
     "type": "git",
     "url": "git+https://github.com/SailingCoder/react-virtualized-list.git"
   },
+  "bugs": {
+    "url": "https://github.com/SailingCoder/react-virtualized-list/issues"
+  },
+  "keywords": [
+    "react",
+    "virtualized",
+    "virtual-list",
+    "infinite-scroll",
+    "lazy-loading",
+    "performance",
+    "large-datasets",
+    "intersection-observer",
+    "react-component",
+    "typescript",
+    "windowing",
+    "scroll",
+    "list",
+    "table",
+    "grid",
+    "ui",
+    "frontend",
+    "optimization"
+  ],
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
