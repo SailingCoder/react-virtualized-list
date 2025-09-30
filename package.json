@@ -1,7 +1,7 @@
 {
   "name": "react-virtualized-list",
   "author": "Sailing",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "description": "High-performance React virtualized list component with infinite scrolling, lazy loading, and dynamic data updates using IntersectionObserver",
   "main": "lib/bundle.cjs.js",
