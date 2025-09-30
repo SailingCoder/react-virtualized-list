@@ -2,7 +2,7 @@
 // 在用户滚动时自动刷新视口内的内容。例如，在新闻应用中，动态加载新的文章，并这种功能确保用户始终能够获取到最新的新闻资讯。
 // 新闻列表 example
 import React, { useState, useEffect } from 'react';
-import VirtualizedList from 'react-virtualized-list';
+import VirtualizedList from '../VirtualizedListV2';
 import './style/common.css';
 
 interface Article {

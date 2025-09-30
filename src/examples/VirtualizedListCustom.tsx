@@ -4,7 +4,7 @@
  * 这个代码示例，比较全面的用到了所有的 API
  */
 import React, { useState, useEffect } from 'react';
-import VirtualizedList from 'react-virtualized-list';
+import VirtualizedList from '../VirtualizedListV2';
 import './style/common.css';
 
 const App: React.FC = () => {

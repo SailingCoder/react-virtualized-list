@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import VirtualizedList from 'react-virtualized-list';
+import VirtualizedList from '../VirtualizedListV2';
 import './style/common.css';
 
 interface ListItemData {
@@ -14,6 +14,18 @@ const fetchData = async (index: number): Promise<ListItemData> => {
     setTimeout(() => {
       resolve({ id: index, name: `项目 ${index}` });
     }, 1000);
+  });
+};
+
+const fetchItemData = async (item: ListItemData): Promise<any> => {
+  // 模拟获取项目的额外数据
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve({ 
+        description: `这是项目 ${item.id} 的详细描述`,
+        timestamp: new Date().toLocaleTimeString()
+      });
+    }, 300);
   });
 };
 
@@ -39,8 +51,17 @@ const BigDataListExample: React.FC = () => {
     loadMoreData();
   }, [loadMoreData]);
 
-  const renderItem = (item: ListItemData): React.ReactNode => {
-    return <div>{item.name}</div>;
+  const renderItem = (item: ListItemData, data?: any): React.ReactNode => {
+    return (
+      <div>
+        <div>{item.name}</div>
+        {data && (
+          <div style={{ fontSize: '12px', color: '#666', marginTop: '4px' }}>
+            {data.description} - {data.timestamp}
+          </div>
+        )}
+      </div>
+    );
   };
 
   return (
@@ -54,7 +75,7 @@ const BigDataListExample: React.FC = () => {
         <VirtualizedList
           listData={listData}
           renderItem={renderItem}
-          fetchItemData={fetchData}
+          fetchItemData={fetchItemData}
           onLoadMore={loadMoreData}
           hasMore={hasMore}
           containerHeight="500px"

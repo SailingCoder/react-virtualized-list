@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import VirtualizedList from 'react-virtualized-list';
+import VirtualizedList from '../VirtualizedListV2';
 
 const itemStyle = {
   height: '50px',

@@ -4,7 +4,7 @@
  * 适用于微博、朋友圈等场景，用户不断下滑屏幕，可以不断看到新的动态和信息。
  */
 
-import VirtualizedList from 'react-virtualized-list';
+import VirtualizedList from '../VirtualizedListV2';
 import React, { useState, useEffect } from 'react';
 import './style/common.css';
 
